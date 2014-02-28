@@ -1,4 +1,8 @@
 
+var fs = require('fs'),
+    header = fs.readFileSync(__dirname + '/templates/header.html', 'utf8'),
+    footer = fs.readFileSync(__dirname + '/templates/footer.html', 'utf8');
+
 exports.json = function (json) {
   return function *(next) {
     if (this.request.header.accept.indexOf('application/json') > -1) {
@@ -15,7 +19,7 @@ exports.is = function (json) {
       if (this.request.header.accept.indexOf('application/json') > -1) {
         this.body = json.single;
       } else {
-        this.body = json.single ? ('<a href="https://twitter.com/' + json.twitter + '">yes</>') : 'no';
+        this.body = wrap(json.single ? twitter(json.twitter, 'yes') : 'no');
       }
     } else {
       yield next;
@@ -25,6 +29,14 @@ exports.is = function (json) {
 
 exports.html = function (json) {
   return function *(next) {
-    this.body = json.interestedIn + '.';
-  }
+    this.body = wrap(twitter(json.twitter, json.interestedIn + '.'));
+  };
 };
+
+function wrap (res) {
+  return header + res + footer;
+}
+
+function twitter (name, value) {
+  return '<a href="https://twitter.com/' + name + '">' + value + '</a>';
+}

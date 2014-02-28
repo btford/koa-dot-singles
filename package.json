@@ -1,0 +1,19 @@
+{
+  "name": "koa-dot-singles",
+  "version": "0.0.0",
+  "description": "koa middleware for making a dot singles site",
+  "main": "middleware.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa",
+    "middleware",
+    "post structuralism",
+    "multiple.singles",
+    "singles",
+    "dating"
+  ],
+  "author": "Brian Ford",
+  "license": "MIT"
+}

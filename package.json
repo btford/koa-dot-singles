@@ -1,6 +1,6 @@
 {
   "name": "koa-dot-singles",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "koa middleware for making a dot singles site",
   "main": "middleware.js",
   "scripts": {

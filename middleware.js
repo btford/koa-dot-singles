@@ -29,7 +29,10 @@ exports.is = function (json) {
 
 exports.html = function (json) {
   return function *(next) {
-    this.body = wrap(twitter(json.twitter, json.interestedIn + '.'));
+    this.body = wrap(json.single ?
+        twitter(json.twitter, json.interestedIn + '.') :
+        'im good thx'
+    );
   };
 };
 
